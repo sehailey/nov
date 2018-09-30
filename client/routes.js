@@ -7,6 +7,7 @@ import {
   Signup,
   UserHome,
   AllPosts,
+  AddPost,
   UserAccount,
   AllTasks,
   KiwiClient,
@@ -34,10 +35,14 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
             <Route path="/posts" component={AllPosts} />
-            <Route path="/irc" component={KiwiClient} />
-            <Route path="/posts" component={AllTasks} />
             <Route
-              path={`/posts/${this.props.username}/account`}
+              path={`/posts/${this.props.username}/add`}
+              component={AddPost}
+            />
+            <Route path="/irc" component={KiwiClient} />
+            <Route path="/tasks" component={AllTasks} />
+            <Route
+              path={`/${this.props.username}/account`}
               component={UserAccount}
             />
           </Switch>
@@ -70,7 +75,12 @@ const mapDispatch = dispatch => {
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Routes))
+export default withRouter(
+  connect(
+    mapState,
+    mapDispatch
+  )(Routes)
+)
 
 /**
  * PROP TYPES

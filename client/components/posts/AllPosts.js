@@ -38,7 +38,10 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Posts)
+export default connect(
+  mapState,
+  mapDispatch
+)(Posts)
 
 Posts.propTypes = {
   posts: PropTypes.array,

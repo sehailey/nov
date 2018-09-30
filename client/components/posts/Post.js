@@ -3,6 +3,9 @@ import CommentsList from './CommentsList'
 
 const Post = props => {
   const {blogger, post, comments} = props
+  console.log('BLOGGER IN POST:', blogger)
+  if (!blogger) return <div>loading...</div>
+
   return (
     <div>
       <div className="row">
